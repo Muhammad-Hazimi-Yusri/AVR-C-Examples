@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "__ATmega644p__",
+        "__AVR_ATmega644p__"
+      ],
+      "compilerPath": "C:/Users/ChronoHax/scoop/apps/gcc/current/bin/gcc.exe",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerArgs": [
+        "-g",
+        "-Os",
+        "-Wall",
+        "-Wextra",
+        "-fpermissive",
+        "-fno-exceptions",
+        "-fno-threadsafe-statics",
+        "-pipe",
+        "-mmcu=atmega644p",
+        "-DF_CPU=16000000UL"
+      ]
+    }
+  ],
+  "version": 4
+}
