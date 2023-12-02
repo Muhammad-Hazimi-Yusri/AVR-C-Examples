@@ -7,7 +7,7 @@
 #define LED_PIN PC6 // Assuming the LED is connected to Pin PC6
 
 int main(void) {
-    // Set PB0 as output pin
+    // Set PC6 as output pin
     DDRC |= (1 << LED_PIN);
 
     while (1) {
