@@ -24,6 +24,20 @@ void initUART() {
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
 }
 
+
+void uart_put_padding(uint8_t padding_number) {
+    for (int i = 0; i < padding_number; i++) {
+        sendUARTString("\n\r");
+    }
+}
+
+void uart_put_byte_binaries(uint8_t byte) {
+    for (int i = 7; i >= 0; i--) {
+        uint8_t bit = (byte >> i) & 1;
+        sendUARTByte('0' + bit);
+    }
+}
+
 void sendUARTByte(uint8_t data) {
     // Wait for the buffer to be empty
     while (!(UCSR0A & (1 << UDRE0)))
@@ -97,7 +111,11 @@ int main() {
         sendUARTString(receivedString);
         
         // uart padding
-        sendUARTString("\n\r");
+        uart_put_padding(1);
+
+        uart_put_byte_binaries(0b01010101);
+
+        uart_put_padding(6);
 
         // send sizeof receivedMessage
         sendUARTString((char*)strlen(receivedString));

@@ -9,13 +9,15 @@
 // GND connected to other side of button
 
 #define BUTTON_PIN PA6 // Assuming the Button is connected to Pin PA6
+// changed back PA6 to use pin change interrupt 
+// each GPIO should have pin change interrupt
 
 #define LED_PIN PC6 // Assuming the LED is connected to Pin PC6
 
 int main(void) {
     // Set PA6 as input pin
     DDRA &= ~(1 << BUTTON_PIN);
-    PORTA |= (1 << BUTTON_PIN); // Enable pull-up resistor of about 10k Ohm
+    PORTA |= (1 << BUTTON_PIN); // Enable pull-up resistor of 10k Ohm
     
 
     // Set PC6 as output pin
