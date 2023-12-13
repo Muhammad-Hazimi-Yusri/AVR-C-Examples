@@ -24,6 +24,24 @@ void initUART() {
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
 }
 
+// put a byte in hex to uart
+void uart_put_byte_hex(uint8_t byte) {
+    uint8_t high_nibble = (byte >> 4) & 0x0F;
+    uint8_t low_nibble = byte & 0x0F;
+
+    if (high_nibble < 10) {
+        sendUARTByte('0' + high_nibble);
+    } else {
+        sendUARTByte('A' + high_nibble - 10);
+    }
+
+    if (low_nibble < 10) {
+        sendUARTByte('0' + low_nibble);
+    } else {
+        sendUARTByte('A' + low_nibble - 10);
+    }
+}
+
 
 void uart_put_padding(uint8_t padding_number) {
     for (int i = 0; i < padding_number; i++) {
